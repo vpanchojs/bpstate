@@ -9,8 +9,4 @@ abstract class BlocBase<T> {
   late T navigator;
   DialogService dialogService = DialogService();
   late String Function(String key) translate;
-
-  void setNavigator(T router) {
-    navigator = router;
-  }
 }
