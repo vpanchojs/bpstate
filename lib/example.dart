@@ -1,4 +1,4 @@
-import 'package:bpstate/bpstate.dart';
+/* import 'package:bpstate/bpstate.dart';
 import 'package:flutter/material.dart';
 
 class MyBlocProvider<T extends BlocBase> extends BlocProvider<T> {
@@ -12,6 +12,7 @@ class MyBlocProvider<T extends BlocBase> extends BlocProvider<T> {
           child: child,
           blocBuilder: blocBuilder,
           blocDispose: blocDispose,
+          serviceLocator: ,
         );
 
   @override
@@ -37,3 +38,4 @@ class _MyBlocProviderState<T extends BlocBase> extends BlocProviderState<T> {
     return Container();
   }
 }
+*/

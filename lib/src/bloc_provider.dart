@@ -5,13 +5,15 @@ abstract class BlocProvider<T extends BlocBase> extends StatefulWidget {
   const BlocProvider({
     Key? key,
     required this.child,
-    required this.blocBuilder,
+    required this.blocBuilder, 
+    required this.serviceLocator,   
     this.blocDispose,
   }) : super(key: key);
 
   final Widget child;
   final T Function() blocBuilder;
   final void Function(T)? blocDispose;
+  final ServiceLocator serviceLocator;
 
   @override
   State<BlocProvider<T>> createState() => BlocProviderState<T>();
@@ -30,15 +32,14 @@ abstract class BlocProvider<T extends BlocBase> extends StatefulWidget {
 }
 
 class BlocProviderState<T extends BlocBase> extends State<BlocProvider<T>> {
-  late T bloc;
-  late ServiceLocator serviceLocator;
+  late T bloc;  
 
   @override
   void initState() {
     super.initState();
     bloc = widget.blocBuilder();
-    bloc.translate = serviceLocator.translate;
-    bloc.navigator = serviceLocator.navigator;
+    bloc.translate = widget.serviceLocator.translate;
+    bloc.navigator = widget.serviceLocator.navigator;
   }
 
   @override
