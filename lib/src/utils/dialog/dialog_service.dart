@@ -5,6 +5,7 @@ class DialogService {
   late Completer<dynamic>? _dialogCompleter;
   late Function closeDialog;
   late Function(String) showProgess;
+  late Set<Enum> openDialogs = <Enum>{};
 
   /// Registers a callback function. Typically to show the dialog
   void registerDialogListener(
@@ -17,6 +18,7 @@ class DialogService {
     if (_dialogs.containsKey(key)) {
       _dialogCompleter = Completer<T>();
       _dialogs[key]!(information);
+      openDialogs.add(key);
       return _dialogCompleter!.future as Future<T>;
     }
     return Future.value();
@@ -26,5 +28,6 @@ class DialogService {
   void dialogComplete([dynamic value]) {
     _dialogCompleter?.complete(value);
     _dialogCompleter = null;
+    openDialogs.clear();
   }
 }
