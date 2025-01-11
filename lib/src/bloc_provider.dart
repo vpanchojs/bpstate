@@ -39,7 +39,7 @@ class BlocProviderState<T extends BlocBase> extends State<BlocProvider<T>> {
     super.initState();
     bloc = widget.blocBuilder();
     bloc.translate = widget.serviceLocator.translate;
-    bloc.navigator = widget.serviceLocator.navigator;
+    bloc.navigator = widget.serviceLocator.navigator();
   }
 
   @override
